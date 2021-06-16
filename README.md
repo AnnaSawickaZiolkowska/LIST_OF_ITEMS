@@ -2,13 +2,15 @@
 
 ## Display the list of items in the most optimal way
 
-Please use the data that is provided in `src/utils/data` and render a list of items,
-where user can select one item from the list. The selection has only a UI visualisation.
-When implementing, take into account any methods you know to optimize the display of list items.
+Please use the data that is provided in `src/utils/data` and create a component which will receive this data as a prop
+and which will render a list of this items (image + title), where user can select or deselect multiple items from the list.
+The selection should have an UI visualisation (eg. another border color).
+
+When implementing, take into account **any methods you know to optimize the display of list items.**
 
 See example below:
 
-![Alt Text](./src/assets/recruitment-task.gif)
+![Alt Text](./src/assets/example.gif)
 
 
 ## Project setup

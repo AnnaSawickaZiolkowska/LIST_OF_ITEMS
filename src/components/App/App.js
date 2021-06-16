@@ -7,7 +7,7 @@ const App = () => {
     <div className='app'>
       <header className='app-header'>
         <img src={logo} className='app-logo' alt='logo' />
-        <p>Please select one item:</p>
+        <p>Please select multiple items:</p>
       </header>
       <div>
         {/* render list here */}
