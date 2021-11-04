@@ -1,4 +1,4 @@
-export const data = [
+const data = [
     {
         "id": 'entity-id-1',
         "title": "accusamus beatae ad facilis cum similique qui sunt",
@@ -72,7 +72,7 @@ export const data = [
     {
         "id": 'entity-id-15',
         "title": "harum dicta similique quis dolore earum ex qui",
-        "url": "https://picsum.photos/id/150/250/120"
+        "url": "https://picsum.photos/id/155/250/120"
     },
     {
         "id": 'entity-id-16',
@@ -232,7 +232,7 @@ export const data = [
     {
         "id": 'entity-id-47',
         "title": "et soluta est",
-        "url": "https://picsum.photos/id/470/250/120"
+        "url": "https://picsum.photos/id/475/250/120"
     },
     {
         "id": 'entity-id-48',
