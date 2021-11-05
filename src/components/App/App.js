@@ -6,13 +6,18 @@ import Item from "./Item";
 
 const App = () => {
   const items = useMemo(() => data, []);
-  console.log(items);
+  const [checkedItems, setCheckedItems] = useState([]);
 
-  const [isChecked, setIsChecked] = useState(false);
-  const handleIsChecked = useCallback(() => {
-      setIsChecked(!isChecked)
-    });
+  const handleChoice = useCallback((id) => {
+    const existingId = checkedItems.find((el) => el.id === id);
+    if (existingId === undefined) {
+      setCheckedItems([...checkedItems, { id: id }]);
+    } else {
+      setCheckedItems(checkedItems.filter((item) => item.id !== id));
+    }
+  });
 
+  console.log(checkedItems);
   return (
     <div className="app">
       <header className="app-header">
@@ -21,7 +26,15 @@ const App = () => {
       </header>
       <div>
         {items.map(({ id, title, url }) => {
-          return <Item key={id} title={title} url={url} onCheckedClick={handleIsChecked} />;
+          return (
+            <Item
+              key={id}
+              id={id}
+              title={title}
+              url={url}
+              handleChoice={() => handleChoice(id)}
+            />
+          );
         })}
       </div>
     </div>
