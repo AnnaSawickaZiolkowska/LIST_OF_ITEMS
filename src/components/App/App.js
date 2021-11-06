@@ -1,12 +1,13 @@
 import { useCallback, useMemo, useState } from "react";
 import logo from "../../assets/DeSmart-logo-black-500px.png";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import data from "../../utils/data";
 import "./App.css";
 import Item from "./Item";
 
 const App = () => {
   const items = useMemo(() => data, []);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useLocalStorage("checkedItems", []);
 
   const handleChoice = useCallback((id) => {
     const existingId = checkedItems.find((el) => el.id === id);
