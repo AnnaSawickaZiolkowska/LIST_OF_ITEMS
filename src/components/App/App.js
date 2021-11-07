@@ -8,7 +8,7 @@ import Item from "./Item";
 const App = () => {
   const items = useMemo(() => data, []);
   const [checkedItems, setCheckedItems] = useLocalStorage("checkedItems", []);
-
+  
   const handleChoice = useCallback((id) => {
     const existingId = checkedItems.find((el) => el.id === id);
     if (existingId === undefined) {
@@ -27,8 +27,20 @@ const App = () => {
       </header>
       <div>
         {items.map(({ id, title, url }) => {
+          const test = {
+            border: checkedItems.find((item) => item.id === id)
+              ? "1px solid turquoise"
+              : "1px solid white",
+            "&:hover": {
+              border: "1px solid red",
+              background: "red",
+            },
+          };
           return (
             <Item
+              className={`article-wrapper ${
+                checkedItems.find((item) => item.id === id) ? "checked" : ""
+              }`}
               key={id}
               id={id}
               title={title}

@@ -36,10 +36,12 @@
   border: 1px solid white;
 }
 .article-wrapper:hover {
+  border: 1px solid teal;
+}
+.checked {
   border: 1px solid turquoise;
 }
-.article-img {
-}
+
 .article-title {
   /* width: clamp(250px, 100%, 370px); */
   width: 340px;
