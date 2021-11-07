@@ -4,6 +4,7 @@
 .app {
   text-align: center;
   max-width: 700px;
+  min-width: 320px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -23,26 +24,4 @@
   font-size: 17px;
   color: #282c34;
   margin: 30px 0;
-}
-
-.article-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 10px;
-  grid-gap: 20px;
-  margin-bottom: 15px;
-  text-align: left;
-  border: 1px solid white;
-}
-.article-wrapper:hover {
-  border: 1px solid teal;
-}
-.checked {
-  border: 1px solid turquoise;
-}
-
-.article-title {
-  /* width: clamp(250px, 100%, 370px); */
-  width: 340px;
 }
