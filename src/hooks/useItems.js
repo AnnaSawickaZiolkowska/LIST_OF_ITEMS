@@ -1,25 +1,27 @@
 import { useMemo, useCallback } from "react";
-import useLocalStorage from "./useLocalStorage";
 import data from "../utils/data";
+import { useDispatch, useSelector } from "react-redux";
+import { addChoice, removeChoice } from "../features/choiceSlice";
 
 const useItems = () => {
   const items = useMemo(() => data, []);
-  const [checkedItems, setCheckedItems] = useLocalStorage("checkedItems", []);
+  const userChoice = useSelector((state) => state.choice.value);
+  const dispatch = useDispatch();
 
   const handleChoice = useCallback(
     (id) => {
-      const existingId = checkedItems.find((el) => el.id === id);
+      const existingId = userChoice.find((el) => el.id === id);
       if (existingId === undefined) {
-        setCheckedItems([...checkedItems, { id: id }]);
+        dispatch(addChoice(id));
       } else {
-        setCheckedItems(checkedItems.filter((item) => item.id !== id));
+        dispatch(removeChoice(id));
       }
     },
-    [checkedItems, setCheckedItems]
+    [userChoice, dispatch]
   );
   return {
     items,
-    checkedItems,
+    userChoice,
     handleChoice,
   };
 };

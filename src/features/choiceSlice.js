@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: [],
+  value: localStorage.getItem("checkedItems")
+    ? JSON.parse(localStorage.getItem("checkedItems"))
+    : [],
 };
 
 export const choiceSlice = createSlice({
@@ -9,11 +11,17 @@ export const choiceSlice = createSlice({
   initialState,
   reducers: {
     addChoice: (state, action) => {
-      state.value.push(action.payload);
+      state.value.push({ id: action.payload });
+    },
+    removeChoice: (state, action) => {
+      state.value.splice(
+        state.value.findIndex(({ id }) => id === action.payload),
+        1
+      );
     },
   },
 });
 
-export const { addChoice } = choiceSlice.actions;
+export const { addChoice, removeChoice } = choiceSlice.actions;
 
 export default choiceSlice.reducer;
