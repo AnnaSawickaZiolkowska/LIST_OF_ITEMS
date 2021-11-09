@@ -1,17 +1,15 @@
 import "./App.css";
 import logo from "../../assets/DeSmart-logo-black-500px.png";
-import React, { useCallback, useSelector } from "react";
+import React, { useCallback } from "react";
+import { useSelector } from "react-redux";
 import useItems from "../../hooks/useItems";
 import Item from "./Item";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 const App = () => {
-  const { items, userChoice, handleChoice } = useItems();
-
-  //  const choice = useSelector(state => state.choice.value);
-  //  console.log(choice);
-  console.log(userChoice);
+  const { items, handleChoice } = useItems();
+  const { checkedItems } = useSelector((state) => state.choice);
 
   const Row = useCallback(
     ({ index, style }) => {
@@ -20,7 +18,7 @@ const App = () => {
         <div style={style}>
           <Item
             className={`${
-              userChoice.find((item) => item.id === id) ? "checked" : ""
+              checkedItems.find((item) => item.id === id) ? "checked" : ""
             }`}
             id={id}
             key={id}
@@ -31,7 +29,7 @@ const App = () => {
         </div>
       );
     },
-    [items, userChoice, handleChoice]
+    [items, checkedItems, handleChoice]
   );
 
   return (
