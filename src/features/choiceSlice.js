@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  checkedItems: localStorage.getItem("checkedItems")
-    ? JSON.parse(localStorage.getItem("checkedItems"))
-    : [],
-};
-
 export const choiceSlice = createSlice({
   name: "choice",
-  initialState,
+  initialState: {
+    checkedItems: localStorage.getItem("checkedItems")
+      ? JSON.parse(localStorage.getItem("checkedItems"))
+      : [],
+  },
   reducers: {
     addChoice: (state, action) => {
       state.checkedItems.push({ id: action.payload });
